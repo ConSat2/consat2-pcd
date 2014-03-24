@@ -1,0 +1,6 @@
+The example package contains the following items:
+- src/*.c: Examples of small programs that perform various actions. Some applications initialize and exit, some are acting as daemons, some are starting and terminating other programs. All programs register to the PCD exception handlers.
+- scripts/examples.pcd: A PCD script that configures these programs.
+- bin: A directory that holds all the binaries.
+- build.sh: A simple script that builds the binaries. Note that there are environment variables that need to be defined. If no variables are defined, the build script will build the binaries for the building machine.
+- run-example.sh: A simple script that shows how to start the PCD with the example rules.

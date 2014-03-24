@@ -1,0 +1,27 @@
+digraph G {
+
+EXAMPLES_A [ label = "EXAMPLES\nA", shape = ellipse ];
+NoStartCondition [ label = "No Start\nCondition", shape = diamond ];
+NoStartCondition -> EXAMPLES_A;
+EXAMPLES_B [ label = "EXAMPLES\nB", shape = ellipse ];
+NoStartCondition -> EXAMPLES_B;
+EXAMPLES_C [ label = "EXAMPLES\nC", shape = ellipse ];
+EXAMPLES_A -> EXAMPLES_C;
+EXAMPLES_B -> EXAMPLES_C;
+EXAMPLES_D [ label = "EXAMPLES\nD", shape = ellipse ];
+EXAMPLES_C -> EXAMPLES_D;
+EXAMPLES_E [ label = "EXAMPLES\nE", shape = ellipse ];
+EXAMPLES_C -> EXAMPLES_E;
+EXAMPLES_F [ label = "EXAMPLES\nF", shape = ellipse ];
+EXAMPLES_D -> EXAMPLES_F;
+EXAMPLES_DEFSUBSYS [ label = "EXAMPLES\nDEFSUBSYS", shape = diamond ];
+EXAMPLES_D -> EXAMPLES_DEFSUBSYS;
+EXAMPLES_E -> EXAMPLES_DEFSUBSYS;
+EXAMPLES_F -> EXAMPLES_DEFSUBSYS;
+EXAMPLES_G [ label = "EXAMPLES\nG", shape = ellipse ];
+EXAMPLES_DEFSUBSYS -> EXAMPLES_G;
+EXAMPLES_LASTRULE [ label = "EXAMPLES\nLASTRULE", shape = diamond ];
+EXAMPLES_G -> EXAMPLES_LASTRULE;
+EXAMPLES_DEFSUBSYS -> EXAMPLES_LASTRULE;
+
+}
