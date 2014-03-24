@@ -1,0 +1,79 @@
+#################################################################
+# examples.pcd: Example PCD script for system services startup
+#
+#################################################################
+RULE = COMMANDER
+START_COND = NONE
+COMMAND = ./bin/a
+SCHED = FIFO,10
+DAEMON = YES
+END_COND = NONE
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = RESTART
+ACTIVE = YES
+
+#################################################################
+RULE = NETMAN
+START_COND = NONE
+COMMAND = ./bin/b 5
+SCHED = NICE,19
+DAEMON = YES
+END_COND = PROCESS_READY
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = RESTART
+ACTIVE = YES
+
+#################################################################
+RULE = WATCHDOG
+START_COND = RULE_COMPLETED,EXAMPLES_A,EXAMPLES_B
+COMMAND = ./bin/c
+SCHED = FIFO,1
+DAEMON = NO
+END_COND = EXIT,0
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = NONE
+ACTIVE = YES
+
+#################################################################
+RULE = ACS
+START_COND = RULE_COMPLETED,EXAMPLES_C
+COMMAND = ./bin/d
+SCHED = NICE,3
+DAEMON = NO
+END_COND = EXIT,0
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = RESTART
+ACTIVE = YES
+
+#################################################################
+RULE = THERMISTOR
+START_COND = RULE_COMPLETED,EXAMPLES_C
+COMMAND = ./bin/e 3
+SCHED = NICE,-5
+DAEMON = YES
+END_COND = PROCESS_READY
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = RESTART
+ACTIVE = YES
+
+#################################################################
+RULE = RTC
+START_COND = RULE_COMPLETED,EXAMPLES_D
+COMMAND = ./bin/f 2
+SCHED = NICE,-5
+DAEMON = YES
+END_COND = PROCESS_READY
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = RESTART
+ACTIVE = YES
+
+#################################################################
+RULE = POWER_SENSOR
+START_COND = RULE_COMPLETED,EXAMPLES_D,EXAMPLES_E,EXAMPLES_F
+COMMAND = NONE
+SCHED = NICE,0
+DAEMON = NO
+END_COND = NONE
+END_COND_TIMEOUT = -1
+FAILURE_ACTION = NONE
+ACTIVE = YES
